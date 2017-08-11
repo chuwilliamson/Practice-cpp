@@ -9,7 +9,7 @@ FileRead::FileRead() : m_data(nullptr)
 const char* FileRead::Read(const char* filename)
 {
 	FILE* fp;
-	errno_t success = fopen_s(&fp, "haircuts.txt", "rb");
+	errno_t success = fopen_s(&fp, filename, "rb");
 	if (success < 0)
 		perror("no file");
 	fseek(fp, 0, SEEK_END);
