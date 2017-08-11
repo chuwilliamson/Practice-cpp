@@ -17,20 +17,34 @@ BunnyApp::~BunnyApp()
 }
 
 bool BunnyApp::startup()
-{ 
+{
+	m_timer = 2.0f;
+	m_roundNumber = 0;
 	
 	return true;
 }
 
-bool BunnyApp::update(float time)
-{
+bool BunnyApp::update(float deltaTime)
+{	
+	m_timer -= deltaTime;
+	
+	if (m_timer <= 0)
+	{
+		m_roundNumber+=1;
+		m_timer = 2.0f;
+	}
+	
 	ImGui_ImplGlfwGL3_NewFrame();
 	// imgui example
-	ImGui::Begin("Rendering Options");
-	//ImGui::ColorEdit3("clear color", glm::value_ptr(m_clearColour));
-	ImGui::Text("bUNNIES");
+	ImGui::Begin("Rendering Options 1");
+	
+	ImGui::Text("Quit menu");
+	
+	
+	ImGui::Text("Round number is %i", m_roundNumber);
 	ImGui::Checkbox("quit?", &m_gameover);
 	ImGui::End();
+	
 
 	return true;
 }

@@ -12,4 +12,7 @@ public:
 	bool shutdown() override;
 	bool createWindow(const char* title, int width, int height, bool fullscreen) override;
 	bool draw() override;
+
+	float m_timer;
+	unsigned int m_roundNumber;
 };
