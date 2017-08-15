@@ -232,3 +232,4 @@ _Pvt_Extensions
 Bootstrap.VC.db
 bootstrap/Bootstrap.vcxproj.user
 root/Practice-Cpp.VC.db
+/root/dep/ReadFromFile.bsc

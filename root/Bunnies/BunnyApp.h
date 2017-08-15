@@ -1,6 +1,7 @@
 #pragma once
 #include "Application.h"
 #include <vector>
+struct Bunny;
 class BunnyApp :
 	public Application
 {
@@ -12,8 +13,7 @@ public:
 	bool shutdown() override;
 	bool createWindow(const char* title, int width, int height, bool fullscreen) override;
 	bool draw() override;
-
-	std::vector<std::string>* m_names;
+	std::vector<Bunny>* m_bunnies;
 	float m_timer;
 	unsigned int m_roundNumber;
 };

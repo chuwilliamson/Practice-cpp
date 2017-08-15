@@ -5,10 +5,10 @@
 #include "imgui.h"
 #include "imgui_impl_glfw_gl3.h"
 #include "FileRead.h"
+#include "Bunny.h"
 
 
-
-BunnyApp::BunnyApp() : m_names(nullptr), m_timer(0), m_roundNumber(0)
+BunnyApp::BunnyApp() : m_bunnies(nullptr), m_timer(0), m_roundNumber(0)
 {
 }
 
@@ -19,7 +19,7 @@ BunnyApp::~BunnyApp()
 
 bool BunnyApp::startup()
 {
-	m_names = new std::vector<std::string>[40];
+	m_bunnies = new std::vector<Bunny>[40];
 	m_timer = 2.0f;
 	m_roundNumber = 0;
 	FILE* fp;
@@ -32,7 +32,9 @@ bool BunnyApp::startup()
 		line[last] = '\0';
 		char name[25];
 		strcpy_s(name, line);
-		m_names->push_back(name);
+		Bunny *b = new Bunny();
+		b->initialize(name);
+		m_bunnies->push_back(*b);
 	}
 
 	return true;
@@ -54,14 +56,14 @@ bool BunnyApp::update(float deltaTime)
 
 	ImGui::Text("Quit menu");
 	int count = 0;
-	for (auto& it = m_names->begin(); it != m_names->end(); ++it)
-	{
-		
-		std::string val = *it;
-		(count < 20) ? ImGui::Text("%i: name = %s => female",count, val.c_str()) : ImGui::Text("%i: name = %s => male",count, val.c_str());
+	for (auto& iter : *m_bunnies)
+	{		
+		if (count < 20)
+			ImGui::Text("%i: name = %s => female", count, iter.m_name);
+		else
+			ImGui::Text("%i: name = %s => male", count, iter.m_name);
 		count++;
 	}
-
 
 	ImGui::Text("Round number is %i", m_roundNumber);
 	ImGui::Checkbox("quit?", &m_gameover);
@@ -91,7 +93,6 @@ bool BunnyApp::createWindow(const char* title, int width, int height, bool fulls
 	ImGuiIO& io = ImGui::GetIO();
 	io.DisplaySize.x = width;
 	io.DisplaySize.y = height;
-
 
 	return true;
 }

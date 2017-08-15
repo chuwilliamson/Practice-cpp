@@ -14,6 +14,10 @@ Application::~Application()
 {
 }
 
+bool Application::draw()
+{
+	return false;
+}
 
 bool Application::createWindow(const char* title, int width, int height, bool fullscreen)
 {
