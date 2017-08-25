@@ -27,7 +27,9 @@
     <ClCompile Include="BunnyApp.cpp" />
     <ClCompile Include="gl_core_4_4.c" />
     <ClCompile Include="imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\dep\imgui\imconfig.h" />
@@ -41,14 +43,13 @@
     <ClInclude Include="BunnyApp.h" />
     <ClInclude Include="gl_core_4_4.h" />
     <ClInclude Include="imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="Observer.h" />
+    <ClInclude Include="Subject.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReadFromFile\ReadFromFile.vcxproj">
       <Project>{b40d63a1-8f9f-403e-b1ee-4c9c9503faa4}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{55E6883D-5034-4774-A2B2-96C77FA74390}</ProjectGuid>

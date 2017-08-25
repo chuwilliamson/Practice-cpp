@@ -8,5 +8,6 @@ public:
 	char* m_name;	
 	bool m_gender;
 	void initialize(const char* name);
+	void rename(const char* newname);
 };
 
